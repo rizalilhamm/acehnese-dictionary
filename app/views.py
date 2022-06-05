@@ -1,25 +1,31 @@
 from flask import Blueprint, request, render_template
+from fast_autocomplete import AutoComplete
 
-acehnese_dictionary = Blueprint('acehnese_dictionary', __name__)
+from app.models import Vocabularies
 
-@acehnese_dictionary.route('/')
-@acehnese_dictionary.route('/home')
+acehnese_dictionary_blueprint = Blueprint('acehnese_dictionary_blueprint', __name__)
+
+@acehnese_dictionary_blueprint.route('/')
+@acehnese_dictionary_blueprint.route('/home')
 def home():
-    return "Halaman Home Berisi form input data"
+    return "Halaman Home Berisi form input data yang diinginkan"
 
 
-@acehnese_dictionary.route('/search')
+@acehnese_dictionary_blueprint.route('/search')
+@acehnese_dictionary_blueprint.route('/search?language=aceh-indonesia')
 def search_data():
     if request.method == 'GET':
-        languages = [
-                "A", "Alat", "Alamat", "Alokasi", "Apa", "Anda", "Andai", "Arak",
-                "B", "Bolu", "Bola", "Bunglon", "Badan", "Badai", "Bagaimana",
-                "C", "Contoh", "Corak", "Canda", "Ceramah", "Cari", "Cermat", "Cerdas",
-                "D", "Dolar", "Dunia", "Dari", "Doraemon", "Data", "Dan",
-                "E", "Ember", "Elemen", "Estetik",
-                "R", "Rumit", "Rencana", "Rupiah", "Roda", "Rugi", "Rangkul", "Raja", "Ratu", "Ragu"
-            ]
+        alldata = Vocabularies.query.all()
+        searched_word = request.args.get('language')
+        words = {}
+        for data in alldata:
+            words[str(data.real_aceh)] = {}
         
-        if request.method == 'POST':
-            return 'Halaman Detail kosakata'
-        return render_template('search_vocabulary.html', languages=languages)
+        if searched_word == 'indonesia-aceh':
+            words = {}
+            for data in alldata:
+                words[str(data.indonesia)] = {}
+
+        auto_complete = AutoComplete(words=words)
+        auto_complete.search(word=searched_word, max_cost=3, size=3)
+        return render_template('search_vocabulary.html', languages=words, search_type=searched_word)
