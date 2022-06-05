@@ -1,6 +1,9 @@
+from flask import jsonify
+
 from app import db
 
 class Vocabularies(db.Model):
+    
     index = db.Column(db.Integer, primary_key=True)
     aceh = db.Column(db.String(150), nullable=True)
     real_aceh = db.Column(db.String(150), nullable=True)
@@ -9,11 +12,7 @@ class Vocabularies(db.Model):
     jawoe = db.Column(db.String(150), nullable=True)
 
     def __repr__(self):
-        return f'{self.aceh} : {self.indonesia}'
-
-    @staticmethod
-    def create(self, **payload):
-        pass
+        return self.aceh
 
 
 class Examples(db.Model):
@@ -22,12 +21,8 @@ class Examples(db.Model):
     contoh_aceh = db.Column(db.String(200), nullable=True)
     contoh_indonesia = db.Column(db.String(200), nullable=True)
     contoh_english = db.Column(db.String(200), nullable=True)
-    aceh_id = db.Column(db.String(200), nullable=True)
+    aceh_id = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return f'In Aceh: {self.contoh_aceh} | In Indonesia: {self.contoh_indonesia}'
-
-    @staticmethod
-    def create(self, **payload):
-        pass
+        return f'{self.aceh}: {self.contoh_aceh}: {self.contoh_indonesia}'
     
