@@ -6,12 +6,15 @@ Flask-Login==0.5.0
 Flask-Migrate==3.1.0
 Flask-SQLAlchemy==2.5.1
 greenlet==1.1.2
+importlib-metadata==4.8.3
+importlib-resources==5.4.0
 itsdangerous==2.0.1
 jieba==0.42.1
 Jinja2==3.0.3
 joblib==1.1.0
 Mako==1.1.6
 MarkupSafe==2.0.1
+numpy
 pylev==1.4.0
 scikit-learn==0.24.2
 scipy==1.5.4
