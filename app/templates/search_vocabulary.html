@@ -8,12 +8,22 @@
 	</script>	
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-	<h1>Masukkan kata yang ingin anda cari</h1>
+<body style="text-align: center;">
+	<h1>Kamus Besar Bahasa Aceh (KBBA)</h1>
 	<!-- <input type="text" id="tags">
 	<input type="submit" value="detail"> -->
-	<input type="text" placeholder="Masukkan kata" id="tags" style="text-align: center;">`
+	{% if not search_type or search_type == 'aceh-indonesia' %}
+		<p><b>Search in:</b> Aceh - Indonesia</p>
+	{% elif search_type == 'indonesia-aceh' %}
+		<p><b>Search in:</b> Indonesia - Aceh</p>
+	{% endif %}
+	<input type="text" id="tags" style="text-align: center;"><br><br>
 	
+	{% if search_type == 'indonesia-aceh' %}
+		<p>Switch language: <a href="search?language=aceh-indonesia">Aceh - Indonesia</a></p>
+	{% elif search_type == 'aceh-indonesia' or not search_type %}
+		<p>Switch language: <a href="search?language=indonesia-aceh">Indonesia - Aceh</a></p>
+	{% endif %}
 	<script>
 $( function() {
 	var availableTags = [
@@ -21,7 +31,7 @@ $( function() {
 			"{{language}}",
 		{% endfor %}
 	];
-	$( "#tags" ).autocomplete({
+	$("#tags").autocomplete({
 	source: availableTags
 	});
 } );
