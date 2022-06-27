@@ -1,0 +1,6 @@
+1. PENGINPUTAN DATA KE DALAM DATABASE
+    > pisahkan setiap kata menjadi 3 kata (aceh, indonesia, english) (Required)
+    > insert data ke dalam database
+2. IMPLEMENTASIKAN FAST-AUTOCOMPLETE atau LEVENSHTEIN DISTANCE PADA SEARCH ENGINE
+    > 
+3. PASTIKAN NILAI MASUKKAN KE DALAM PLACEHOLDER
