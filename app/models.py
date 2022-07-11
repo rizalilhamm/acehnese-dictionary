@@ -6,13 +6,12 @@ class Vocabularies(db.Model):
     
     index = db.Column(db.Integer, primary_key=True)
     aceh = db.Column(db.String(150), nullable=True)
-    real_aceh = db.Column(db.String(150), nullable=True)
     indonesia = db.Column(db.String(150), nullable=True)
     english = db.Column(db.String(150), nullable=True)
     jawoe = db.Column(db.String(150), nullable=True)
 
     def __repr__(self):
-        return self.aceh
+        return f'{self.aceh} | {self.indonesia} | {self.english}'
 
 
 class Examples(db.Model):

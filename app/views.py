@@ -19,12 +19,18 @@ def search_data():
         searched_word = request.args.get('language')
         words = {}
         for data in alldata:
-            words[str(data.real_aceh)] = {}
-        
-        if searched_word == 'indonesia-aceh':
-            words = {}
-            for data in alldata:
-                words[str(data.indonesia)] = {}
+            # print('nilai data', data)
+            # words[str(data.aceh)] = {}
+            print('sedang mendapatkan data', data)        
+            if searched_word == 'indonesia-aceh':
+                words = {}
+                for data in alldata:
+                    words[str(data.indonesia)] = {}
+
+            elif searched_word == 'aceh-indonesia' or not searched_word:
+                words = {}
+                for data in alldata:
+                    words[str(data.aceh)] = {}
 
         auto_complete = AutoComplete(words=words)
         auto_complete.search(word=searched_word, max_cost=3, size=3)
