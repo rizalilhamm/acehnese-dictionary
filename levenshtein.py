@@ -1,7 +1,7 @@
 from turtle import distance
 import numpy
 
-def levenshteinDistanceDP(token1, token2):
+def levenshteinDistanceMatrix(token1, token2):
     distances = numpy.zeros((len(token1) + 1, len(token2) + 1))
     for t1 in range(len(token1) + 1):
         distances[t1][0] = t1
@@ -14,10 +14,7 @@ def levenshteinDistanceDP(token1, token2):
     for t1 in range(1, len(token1) + 1):
         for t2 in range(1, len(token2) + 1):
             if (token1[t1-1] == token2[t2-1]):
-                print('nilai sama: ', token1[t1-1])
-                print('nilai distances[t1][t2]: ', distances[t1][t2])
                 distances[t1][t2] = distances[t1 - 1][t2 - 1]
-                print('nilai distances[t1][t2] Updated: ', distances[t1][t2])
 
             else:
                 a = distances[t1][t2 - 1]
@@ -32,7 +29,7 @@ def levenshteinDistanceDP(token1, token2):
                     distances[t1][t2] = c + 1
 
         
-    printDistances(distances, len(token1), len(token2))
+    # printDistances(distances, len(token1), len(token2))
     return int(distances[len(token1)][len(token2)])
 
 def printDistances(distances, token1Length, token2Length):
@@ -42,5 +39,5 @@ def printDistances(distances, token1Length, token2Length):
         print()
 
 
-distances = levenshteinDistanceDP("kelm", "hello")
+distances = levenshteinDistanceMatrix("kelm", "hello")
 print(distances)
