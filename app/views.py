@@ -23,13 +23,11 @@ def search_data():
 
         if searched_word == 'indonesia-aceh':
             semua_kosakata_indonesia = semua_kosakata['semua_kosakata_indonesia']
-            print('nilai semua kosakata indonesia', semua_kosakata_indonesia)
             for kosakata_indonesia in semua_kosakata_indonesia:
                 words[kosakata_indonesia] = {}
         
         elif not searched_word or searched_word == 'aceh-indonesia':
             semua_kosakata_aceh = semua_kosakata['semua_kosakata_aceh']
-            print('nilai semua kosakata aceh', semua_kosakata_aceh)
             for kosakata_aceh in semua_kosakata_aceh:
                 words[kosakata_aceh] = {}
 
