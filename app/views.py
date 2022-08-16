@@ -1,8 +1,9 @@
+from crypt import methods
+from unittest import result
 from flask import Blueprint, request, render_template
 from fast_autocomplete import AutoComplete
 from render_all_data import get_all_data
-
-from app.models import Vocabularies
+from calculate_distance import calcDictDistance
 
 acehnese_dictionary_blueprint = Blueprint('acehnese_dictionary_blueprint', __name__)
 
@@ -12,25 +13,43 @@ def home():
     return "Halaman Home Berisi form input data yang diinginkan"
 
 
-@acehnese_dictionary_blueprint.route('/search')
-@acehnese_dictionary_blueprint.route('/search?language=aceh-indonesia')
-def search_data():
-    semua_kosakata = get_all_data()
+@acehnese_dictionary_blueprint.route('/search/aceh-indonesia', methods=["GET", "POST"])
+def search_data_aceh_indonesia():
+    semua_kosakata = {}
 
-    if request.method == 'GET':
-        searched_word = request.args.get('language')
+    if request.method == 'POST':
+        word = request.form.get('word').lower() or "".lower()
+
+        if len(word.replace(" ", "")) == 0:
+            return render_template("search_vocabulary_aceh_indonesia.html")
+        semua_kosakata = calcDictDistance(word=word, numWords=10, search_type='aceh_indonesia')
+
+
         words = {}
 
-        if searched_word == 'indonesia-aceh':
-            semua_kosakata_indonesia = semua_kosakata['semua_kosakata_indonesia']
-            for kosakata_indonesia in semua_kosakata_indonesia:
-                words[kosakata_indonesia] = {}
-        
-        elif not searched_word or searched_word == 'aceh-indonesia':
-            semua_kosakata_aceh = semua_kosakata['semua_kosakata_aceh']
-            for kosakata_aceh in semua_kosakata_aceh:
-                words[kosakata_aceh] = {}
+        for kosakata_aceh in semua_kosakata:
+            words[kosakata_aceh.capitalize()] = {}
 
-        auto_complete = AutoComplete(words=words)
-        auto_complete.search(word=searched_word, max_cost=3, size=3)
-        return render_template('search_vocabulary.html', languages=words, search_type=searched_word)
+        return render_template('search_vocabulary_aceh_indonesia.html', semua_kosakata=semua_kosakata, word=word)
+    return render_template('search_vocabulary_aceh_indonesia.html')
+
+
+@acehnese_dictionary_blueprint.route('/search/indonesia-aceh', methods=["GET", "POST"])
+def search_data_indonesia_aceh():
+    semua_kosakata = {}
+
+    if request.method == 'POST':
+        word = request.form.get('word').lower() or "".lower()
+
+        if len(word.replace(" ", "")) == 0:
+            return render_template("search_vocabulary_indonesia_aceh.html")
+        semua_kosakata = calcDictDistance(word=word, numWords=10, search_type='indonesia_aceh')
+
+
+        words = {}
+
+        for kosakata_aceh in semua_kosakata:
+            words[kosakata_aceh.capitalize()] = {}
+
+        return render_template('search_vocabulary_indonesia_aceh.html', semua_kosakata=semua_kosakata, word=word)
+    return render_template('search_vocabulary_indonesia_aceh.html')
