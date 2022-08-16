@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Auto Complete Bahasa Aceh</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+	</script>	
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="text-align: center;">
+	<h1>Kamus Besar Bahasa Aceh (KBBA)</h1>
+	<p><b>Search in:</b>Indonesia - Aceh</p>
+	<form action="{{ url_for('acehnese_dictionary_blueprint.search_data_indonesia_aceh')}}" method="post">
+		<input type="text" id="tags" style="text-align: center;" name="word" placeholder="Masukkan text" value="{{ word }}" required>
+		<input type="submit" value="Search">
+	</form>
+
+	<table class="center">
+		{% for kata in semua_kosakata %}
+			<tr>
+				<td><a style="text-align: center;" href="#">{{ kata|capitalize }}</a></td>
+		  	</tr>
+		{% endfor %}
+	</table>
+	<p>Switch language: <a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia') }}">Aceh - Indonesia</a></p>
+	<script>
+</script>
+	
+</body>
+</html>
