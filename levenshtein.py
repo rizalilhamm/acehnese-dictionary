@@ -37,7 +37,3 @@ def printDistances(distances, token1Length, token2Length):
         for t2 in range(token2Length + 1):
             print(int(distances[t1][t2]), end=" ")
         print()
-
-
-distances = levenshteinDistanceMatrix("kelm", "hello")
-print(distances)
