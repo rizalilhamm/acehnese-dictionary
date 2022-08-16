@@ -11,7 +11,7 @@
 </head>
 <body style="text-align: center;">
 	<h1>Kamus Besar Bahasa Aceh (KBBA)</h1>
-	<p><b>Search in:</b>Indonesia - Aceh</p>
+	<h2> Indonesia - Aceh</h2>
 	<form action="{{ url_for('acehnese_dictionary_blueprint.search_data_indonesia_aceh')}}" method="post">
 		<input type="text" id="tags" style="text-align: center;" name="word" placeholder="Masukkan text" value="{{ word }}" required>
 		<input type="submit" value="Search">
@@ -24,7 +24,8 @@
 		  	</tr>
 		{% endfor %}
 	</table>
-	<p>Switch language: <a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia') }}">Aceh - Indonesia</a></p>
+	<br>
+	<a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia') }}">Aceh - Indonesia</a>
 	<script>
 </script>
 	
