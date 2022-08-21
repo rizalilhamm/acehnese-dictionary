@@ -20,7 +20,7 @@
 	<table class="center">
 		{% for kata in semua_kosakata %}
 			<tr>
-				<td><a style="text-align: center;" href="http://127.0.0.1:5000/search/indonesia-aceh/{{ kata }}">{{ kata|capitalize }}</a></td>
+				<td><a style="text-align: center;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_indonesia_aceh', kata=kata)}}">{{ kata|capitalize }}</a></td>
 		  	
 			</tr>
 		{% endfor %}
