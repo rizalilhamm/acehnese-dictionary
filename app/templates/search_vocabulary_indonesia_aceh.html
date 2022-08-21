@@ -20,8 +20,9 @@
 	<table class="center">
 		{% for kata in semua_kosakata %}
 			<tr>
-				<td><a style="text-align: center;" href="#">{{ kata|capitalize }}</a></td>
-		  	</tr>
+				<td><a style="text-align: center;" href="http://127.0.0.1:5000/search/indonesia-aceh/{{ kata }}">{{ kata|capitalize }}</a></td>
+		  	
+			</tr>
 		{% endfor %}
 	</table>
 	<br>
