@@ -44,4 +44,4 @@ def calcDictDistance(word, numWords, search_type):
         closestWords.append(wordDetails[1])
 
     perbedaan.sort()
-    return closestWords
+    return [closestWords]

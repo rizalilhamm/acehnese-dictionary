@@ -22,15 +22,16 @@ def search_data_aceh_indonesia():
 
         if len(word.replace(" ", "")) == 0:
             return render_template("search_vocabulary_aceh_indonesia.html")
-        semua_kosakata = calcDictDistance(word=word, numWords=10, search_type='aceh_indonesia')
-
+        response = calcDictDistance(word=word, numWords=5, search_type='aceh_indonesia')
+        semua_kosakata = response[0]
 
         words = {}
 
         for kosakata_aceh in semua_kosakata:
-            words[kosakata_aceh.capitalize()] = {}
+            arti = Vocabularies.query.filter_by(aceh=kosakata_aceh).first()
+            words[f'{kosakata_aceh.capitalize()} ({arti.indonesia.capitalize()})'] = {}
 
-        return render_template('search_vocabulary_aceh_indonesia.html', semua_kosakata=semua_kosakata, word=word)
+        return render_template('search_vocabulary_aceh_indonesia.html', semua_kosakata=words, word=word)
     return render_template('search_vocabulary_aceh_indonesia.html')
 
 
@@ -43,21 +44,23 @@ def search_data_indonesia_aceh():
 
         if len(word.replace(" ", "")) == 0:
             return render_template("search_vocabulary_indonesia_aceh.html")
-        semua_kosakata = calcDictDistance(word=word, numWords=10, search_type='indonesia_aceh')
-
+        response = calcDictDistance(word=word, numWords=5, search_type='indonesia_aceh')
+        semua_kosakata = response[0]
 
         words = {}
-
         for kosakata_aceh in semua_kosakata:
-            words[kosakata_aceh.capitalize()] = {}
+            arti = Vocabularies.query.filter_by(indonesia=kosakata_aceh).first()
+            words[f'{kosakata_aceh.capitalize()} ({arti.aceh.upper()})'] = {}
 
-        return render_template('search_vocabulary_indonesia_aceh.html', semua_kosakata=semua_kosakata, word=word)
+        return render_template('search_vocabulary_indonesia_aceh.html', semua_kosakata=words, word=word)
     return render_template('search_vocabulary_indonesia_aceh.html')
 
 
 @acehnese_dictionary_blueprint.route('/search/indonesia-aceh/<string:kata>/', methods=["GET", "POST"])
 def get_indonesia_detail_indonesia_aceh(kata):
-    selected_word = Vocabularies.query.filter_by(indonesia=kata).first()
+    key = kata.split("(")[0].strip()
+    key = key.lower()
+    selected_word = Vocabularies.query.filter_by(indonesia=key).first()
 
     if selected_word is None:
         return render_template("not_found_indonesia_aceh.html")
@@ -67,7 +70,9 @@ def get_indonesia_detail_indonesia_aceh(kata):
 
 @acehnese_dictionary_blueprint.route('/search/aceh-indonesia/<string:kata>/', methods=["GET", "POST"])
 def get_indonesia_detail_aceh_indonesia(kata):
-    selected_word = Vocabularies.query.filter_by(aceh=kata).first()
+    key = kata.split("(")[0].strip()
+    key = key.lower()
+    selected_word = Vocabularies.query.filter_by(aceh=key).first()
 
     if selected_word is None:
         return render_template("not_found_aceh_indonesia.html")

@@ -9,9 +9,10 @@
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-	<p>Aceh > Indonesia > English</p>
-	<p>{{ aceh }} > {{ indonesia }} > {{ english }}</p>
+<body style="text-align: center;">
+	<h1>Kamus Besar Bahasa Aceh (KBBA)</h1>
+	<p>Aceh - Indonesia - English</p>
+	<p>{{ aceh }} - {{ indonesia }} - {{ english }}</p>
 	<br>
 	<a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia')}}">Cari yang lain (Aceh Indonesia)</a>
 </body>
