@@ -8,10 +8,6 @@ acehnese_dictionary_blueprint = Blueprint('acehnese_dictionary_blueprint', __nam
 
 @acehnese_dictionary_blueprint.route('/')
 @acehnese_dictionary_blueprint.route('/home/')
-def home():
-    return render_template('index.html')
-
-
 @acehnese_dictionary_blueprint.route('/search/aceh-indonesia/', methods=["GET", "POST"])
 def search_data_aceh_indonesia():
     semua_kosakata = {}
