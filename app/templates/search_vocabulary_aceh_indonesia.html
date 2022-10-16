@@ -36,7 +36,7 @@ input[type=submit] {
 }
 input[type=submit]:hover {
   background-color: #45a049;
-  margin-left: 43%;
+  margin-left: 49%;
 }
 .center {
   margin: auto;
@@ -83,14 +83,20 @@ tr:nth-child(even) {
   <form action="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia')}}" method="post">
     <input type="text" id="tags" name="word" placeholder="Masukkan kata" required> <br>
     <input type="submit" value="Cari" style="background-color: grey;">
-  <h4 style="margin-left: 28%; color: #ccc;">Rekomendasi Akan ditampilkan di bawah sini</h4>
   </form>
 </div>
 
 <table class="center">
+  <tr>
+    {% if semua_kosakata|length > 0 %}
+      <th style="padding-left: 43%;  margin-top: 5%; color: black; text-decoration: none;">Click salah satu untuk detail</th>
+    {% else %}
+      <th style="padding-left: 37%; margin-top: 5%; color: black; text-decoration: none;">Belum ada rekomendasi, coba cari kata!</th>
+    {% endif %}    
+  </tr>
 	{% for kata in semua_kosakata %}
 		<tr>
-			<td><a style="text-align: center;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_aceh_indonesia', kata=kata)}}">{{ kata|capitalize }}</a></td>
+			<td><a style="text-align: center; margin-left: 5%; margin-top: 5%; color: black; text-decoration: none;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_aceh_indonesia', kata=kata)}}">{{ kata|capitalize }}</a></td>
 		</tr>
 	{% endfor %}
 </table>
