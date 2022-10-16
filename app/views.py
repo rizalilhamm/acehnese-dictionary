@@ -1,4 +1,3 @@
-from operator import index
 from flask import Blueprint, request, render_template
 from calculate_distance import calcDictDistance
 from app.models import Vocabularies
@@ -10,7 +9,7 @@ acehnese_dictionary_blueprint = Blueprint('acehnese_dictionary_blueprint', __nam
 @acehnese_dictionary_blueprint.route('/')
 @acehnese_dictionary_blueprint.route('/home/')
 def home():
-    return "Halaman Home Berisi form input data yang diinginkan"
+    return render_template('index.html')
 
 
 @acehnese_dictionary_blueprint.route('/search/aceh-indonesia/', methods=["GET", "POST"])
