@@ -1,34 +1,102 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Auto Complete Bahasa Aceh</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
-	</script>	
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body style="text-align: center;">
-	<h1>Kamus Besar Bahasa Aceh (KBBA)</h1>
-	<h2> Indonesia - Aceh</h2>
-	<form action="{{ url_for('acehnese_dictionary_blueprint.search_data_indonesia_aceh')}}" method="post">
-		<input type="text" id="tags" style="text-align: center;" name="word" placeholder="Masukkan text" value="{{ word }}" required>
-		<input type="submit" value="Search">
-	</form>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<title>
+			Kamus | Indonesia Aceh
+		</title>
+	</head>
+<style>	
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: 28%;
 
-	<table class="center">
-		{% for kata in semua_kosakata %}
-			<tr>
-				<td><a style="text-align: center;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_indonesia_aceh', kata=kata)}}">{{ kata|capitalize }}</a></td>
-		  	
-			</tr>
-		{% endfor %}
-	</table>
-	<br>
-	<a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia') }}">Aceh - Indonesia</a>
-	<script>
-</script>
-	
+}
+
+input[type=submit] {
+  width: 10%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 10px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 49%;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+  margin-left: 43%;
+}
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <a class="navbar-brand" href="" style="margin-left: 3%;">Kamus Aceh Indonesia</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+			  <ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia')}}">Aceh-Indonesia</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{{ url_for('acehnese_dictionary_blueprint.search_data_indonesia_aceh')}}">Indonesia-Aceh</a>
+				  </li>
+			  </ul>
+			</div>
+		</nav>
+	</div>
+<h4 style="margin-left: 40%; margin-top: 1%;">Current Translate (Indonesia - Aceh)</h4>
+<div class="center">
+  <form action="{{ url_for('acehnese_dictionary_blueprint.search_data_indonesia_aceh')}}" method="post">
+    <input type="text" id="tags" name="word" placeholder="Masukkan kata" required> <br>
+
+    <input type="submit" value="Cari" style="background-color: grey;">
+  <h4 style="margin-left: 28%; color: #ccc;">Rekomendasi Akan ditampilkan di bawah sini</h4>
+  </form>
+</div>
+
+<table class="center">
+	{% for kata in semua_kosakata %}
+		<tr>
+			<td><a style="text-align: center;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_indonesia_aceh', kata=kata)}}">{{ kata|capitalize }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
+<br>
+<a href="{{ url_for('acehnese_dictionary_blueprint.search_data_aceh_indonesia')}}" style="text-align: center; margin-left: 48%; margin-top: 5%; color: black; text-decoration: none;">Cari Aceh Indonesia</a>
 </body>
 </html>
