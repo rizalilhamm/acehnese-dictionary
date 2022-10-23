@@ -7,6 +7,9 @@ from flask import jsonify
 acehnese_dictionary_blueprint = Blueprint('acehnese_dictionary_blueprint', __name__)
 
 @acehnese_dictionary_blueprint.route('/')
+def home():
+    return render_template('aceh_indo.html')
+
 @acehnese_dictionary_blueprint.route('/home/')
 @acehnese_dictionary_blueprint.route('/search/aceh-indonesia/', methods=["GET", "POST"])
 def search_data_aceh_indonesia():
