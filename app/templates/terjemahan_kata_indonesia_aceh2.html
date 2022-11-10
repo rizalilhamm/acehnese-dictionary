@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kamus Bahasa Aceh</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <style>
+        .swal-overlay {
+            background-color: rgba(43, 165, 137, 0.45);
+        }
+
+        .swal-footer {
+            background-color: rgb(245, 248, 250);
+            margin-top: 32px;
+            border-top: 1px solid #E9EEF1;
+            overflow: hidden;
+        }
+
+        .swal-button {
+            padding: 7px 19px;
+            border-radius: 2px;
+            background-color: #4962B3;
+            font-size: 12px;
+            border: 1px solid #3e549a;
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        ion-icon {
+            font-size: 90px;
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body class="bg-success">
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="">Translate</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href=""
+                        style="cursor: pointer">Kamus</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal"
+                        data-bs-target="#sarankan-terjemahan" style="cursor: pointer">Sarankan Terjemahan</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal"
+                        data-bs-target="#request-terjemahan" style="cursor: pointer">Request Terjemahan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <form action="" style="margin-top: 12%;" method="post">
+            <h4 class="text-light" style="margin-left: 45%; margin-bottom: 2px;">Kamus Indonesia Aceh</h4>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                <input class="form-control mb-2" style="width: 30%; margin-left:35%;" name="word" placeholder="Search in Indonesia">
+                <button type="submit" class="btn btn-secondary" style="margin-left: 48%;">Search</button>
+                <textarea class="form-control mt-3 mb-2" style="width: 30%; margin-left:35%;" rows="3" placeholder="Terjemahan akan ditampilkan disini" disabled>Indonesia : {{ indonesia|capitalize }}
+Aceh         : {{ aceh|capitalize }}
+English     : {{ english|capitalize }}</textarea>
+            </div>
+        </form>
+    </div>
+    <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/aceh-indonesia/">Aceh Indonesia</a></p>
+</body>
+</html>
