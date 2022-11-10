@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, redirect
 from calculate_distance import calcDictDistance
 from app.models import Vocabularies
 from flask import jsonify
@@ -19,7 +19,7 @@ def search_data_aceh_indonesia():
         word = request.form.get('word').lower() or "".lower()
 
         if len(word.replace(" ", "")) == 0:
-            return render_template("search_vocabulary_aceh_indonesia.html")
+            return render_template("search_vocabulary_aceh_indonesia2.html")
         response = calcDictDistance(word=word, numWords=5, search_type='aceh_indonesia')
         semua_kosakata = response[0]
 
@@ -29,8 +29,8 @@ def search_data_aceh_indonesia():
             arti = Vocabularies.query.filter_by(aceh=kosakata_aceh).first()
             words[f'{kosakata_aceh.capitalize()} ({arti.indonesia.capitalize()})'] = {}
 
-        return render_template('search_vocabulary_aceh_indonesia.html', semua_kosakata=words, word=word)
-    return render_template('search_vocabulary_aceh_indonesia.html')
+        return render_template('search_vocabulary_aceh_indonesia2.html', semua_kosakata=words, word=word)
+    return render_template('search_vocabulary_aceh_indonesia2.html')
 
 
 @acehnese_dictionary_blueprint.route('/search/indonesia-aceh/', methods=["GET", "POST"])
@@ -41,17 +41,19 @@ def search_data_indonesia_aceh():
         word = request.form.get('word').lower() or "".lower()
 
         if len(word.replace(" ", "")) == 0:
-            return render_template("search_vocabulary_indonesia_aceh.html")
+            return render_template("search_vocabulary_indonesia_aceh2.html")
         response = calcDictDistance(word=word, numWords=5, search_type='indonesia_aceh')
         semua_kosakata = response[0]
 
         words = {}
+        jumlah = 0
         for kosakata_aceh in semua_kosakata:
             arti = Vocabularies.query.filter_by(indonesia=kosakata_aceh).first()
             words[f'{kosakata_aceh.capitalize()} ({arti.aceh.upper()})'] = {}
+            jumlah += 1
 
-        return render_template('search_vocabulary_indonesia_aceh.html', semua_kosakata=words, word=word)
-    return render_template('search_vocabulary_indonesia_aceh.html')
+        return render_template('search_vocabulary_indonesia_aceh2.html', semua_kosakata=words, word=word, jumlah=jumlah)
+    return render_template('search_vocabulary_indonesia_aceh2.html')
 
 
 @acehnese_dictionary_blueprint.route('/search/indonesia-aceh/<string:kata>/', methods=["GET", "POST"])
@@ -60,10 +62,12 @@ def get_indonesia_detail_indonesia_aceh(kata):
     key = key.lower()
     selected_word = Vocabularies.query.filter_by(indonesia=key).first()
 
+    if request.method == 'POST':
+        return search_data_indonesia_aceh()
     if selected_word is None:
         return render_template("not_found_indonesia_aceh.html")
     elif selected_word is not None:
-        return render_template('terjemahan_kata_indonesia_aceh.html', aceh=selected_word.aceh.upper(), indonesia=selected_word.indonesia.upper(), english=selected_word.english[:len(selected_word.english)-1].upper())
+        return render_template('terjemahan_kata_indonesia_aceh2.html', aceh=selected_word.aceh.upper(), indonesia=selected_word.indonesia.upper(), english=selected_word.english[:len(selected_word.english)-1].upper())
 
 
 @acehnese_dictionary_blueprint.route('/search/aceh-indonesia/<string:kata>/', methods=["GET", "POST"])
@@ -71,8 +75,11 @@ def get_indonesia_detail_aceh_indonesia(kata):
     key = kata.split("(")[0].strip()
     key = key.lower()
     selected_word = Vocabularies.query.filter_by(aceh=key).first()
-
+    
+    if request.method == 'POST':
+        return search_data_aceh_indonesia()
+    
     if selected_word is None:
-        return render_template("not_found_aceh_indonesia.html")
+        return render_template("not_found_aceh_indonesia2.html")
     elif selected_word is not None:
-        return render_template('terjemahan_kata_aceh_indonesia.html', aceh=selected_word.aceh.upper(), indonesia=selected_word.indonesia.upper(), english=selected_word.english[:len(selected_word.english)-1].upper())
+        return render_template('terjemahan_kata_aceh_indonesia2.html', aceh=selected_word.aceh.upper(), indonesia=selected_word.indonesia.upper(), english=selected_word.english[:len(selected_word.english)-1].upper())
