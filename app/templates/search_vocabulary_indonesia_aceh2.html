@@ -80,8 +80,7 @@
             <thead>
               <tr>
                 {% if semua_kosakata|length > 0 %}
-                    <th scope="col">No</th>
-                    <th scope="col">Indonesia</th>
+                    <th scope="col" style="padding-left: 50px;">Indonesia</th>
                     <th scope="col">Detail</th>
                 {% else %}
                     <th scope="col" style="padding-left: 27%;">Belum Ada Rekomendasi kata</th>
@@ -91,8 +90,7 @@
             <tbody>
                 {% for kata in semua_kosakata %}
                     <tr>
-                        <td></td>
-                        <td>{{ kata|capitalize }}</td>
+                        <td style="padding-left: 50px;">{{ kata|capitalize }}</td>
                         <td><a style="text-align: center; margin-left: 5%; margin-top: 5%; color: black; text-decoration: none;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_indonesia_aceh', kata=kata)}}">pilih</a></td>
                     </tr>
                 {% endfor %}
