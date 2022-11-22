@@ -41,6 +41,7 @@ def calcDictDistance(word, numWords, search_type):
     for i in range(numWords):
         currWordDist = dictWordDist[i]
         wordDetails = currWordDist.split("-")
+        print('hasil distance: ', wordDetails[0] ,"-", wordDetails[1])
         closestWords.append(wordDetails[1])
 
     perbedaan.sort()
