@@ -121,6 +121,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/home/kamus"
                         style="cursor: pointer">Kamus</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/home/translate"
+                        style="cursor: pointer">Sarankan / Request</a></li>
                 </ul>
             </div>
         </div>
@@ -164,20 +166,21 @@
         </div>
         <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/indonesia-aceh/">Indonesia Aceh</a></p>
     <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white fixed-bottom">
+    <div class="copyright py-4 text-center text-white" style="margin-top: 310px;">
         <div class="container"><small>Copyright &copy; Kamus Bahasa Aceh 2022</small></div>
     </div>
     <!-- jQuery -->
-    <button class="open-button" onclick="openForm()" style="margin-bottom: 3%;">Sarankan / Request</button>
+    <!-- <button class="open-button" onclick="openForm()" style="margin-bottom: 3%;">Sarankan / Request</button> -->
 
-<div class="form-popup" id="myForm" style="margin-bottom: 3%;">
-  <form action="/action_page.php" class="form-container">
+<!-- <div class="form-popup" id="myForm" style="margin-bottom: 3%;">
+  <form action="http://127.0.0.1:8000/home/translate/sarankan" class="form-container" method="post" enctype="multipart/form-data">
+
 
     <label for="email"><b>Aceh</b></label>
-    <input type="text" placeholder="kata Aceh" name="email">
+    <input type="text" placeholder="kata Aceh" name="aceh">
 
     <label for="psw"><b>Indonesia</b></label>
-    <input type="text" placeholder="Kata Indonesia" name="psw">
+    <input type="text" placeholder="Kata Indonesia" name="indonesia">
 
     <button type="submit" class="btn">Sarankan</button>
     <button type="submit" class="btn">Request</button>
@@ -191,7 +194,7 @@
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
-}
+} -->
 </script>
 </body>
 </html>

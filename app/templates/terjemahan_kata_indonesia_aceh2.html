@@ -121,6 +121,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/home/kamus"
                         style="cursor: pointer">Kamus</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/home/translate"
+                        style="cursor: pointer">Sarankan / Request</a></li>
                 </ul>
             </div>
         </div>
@@ -132,14 +134,19 @@
                 <label for="exampleFormControlTextarea1" class="form-label"></label>
                 <input class="form-control mb-2" style="width: 30%; margin-left:35%;" name="word" placeholder="Search in Indonesia">
                 <button type="submit" class="btn btn-secondary" style="margin-left: 48%;">Search</button>
-                <textarea class="form-control mt-3 mb-2" style="width: 30%; margin-left:35%;" rows="3" placeholder="Terjemahan akan ditampilkan disini" disabled>Indonesia : {{ indonesia|capitalize }}
+                <textarea class="form-control mt-3 mb-2" style="width: 30%; margin-left:35%;" rows="5" placeholder="Terjemahan akan ditampilkan disini" disabled>Indonesia : {{ indonesia|capitalize }}
 Aceh         : {{ aceh|capitalize }}
-English     : {{ english|capitalize }}</textarea>
+English     : {{ english|capitalize }}
+Arab         : -
+Jawoe      : - </textarea>
             </div>
         </form>
     </div>
     <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/aceh-indonesia/">Aceh Indonesia</a></p>
-<button class="open-button" onclick="openForm()">Sarankan / Request</button>
+    <div class="copyright py-4 text-center text-white" style="margin-top: 320px;">
+      <div class="container"><small>Copyright &copy; Kamus Bahasa Aceh 2022</small></div>
+  </div>
+    <!-- <button class="open-button" onclick="openForm()">Sarankan / Request</button>
 
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
@@ -163,7 +170,7 @@ English     : {{ english|capitalize }}</textarea>
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
-</script>
+</script> -->
 
 </body>
 </html>
