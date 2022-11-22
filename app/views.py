@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect
 from calculate_distance import calcDictDistance
-from app.models import Vocabularies
+from app.models import *
 from flask import jsonify
 
 
@@ -20,7 +20,7 @@ def search_data_aceh_indonesia():
 
         if len(word.replace(" ", "")) == 0:
             return render_template("search_vocabulary_aceh_indonesia2.html")
-        response = calcDictDistance(word=word, numWords=5, search_type='aceh_indonesia')
+        response = calcDictDistance(word=word, numWords=10, search_type='aceh_indonesia')
         semua_kosakata = response[0]
 
         words = {}
@@ -42,7 +42,7 @@ def search_data_indonesia_aceh():
 
         if len(word.replace(" ", "")) == 0:
             return render_template("search_vocabulary_indonesia_aceh2.html")
-        response = calcDictDistance(word=word, numWords=5, search_type='indonesia_aceh')
+        response = calcDictDistance(word=word, numWords=10, search_type='indonesia_aceh')
         semua_kosakata = response[0]
 
         words = {}
