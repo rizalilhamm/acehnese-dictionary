@@ -139,7 +139,7 @@
         </form>
     </div>
     {% if semua_kosakata|length > 0 %}
-        <h1 style="margin-left: 750px; margin-top: 5px; margin-bottom: 4px;" class="text-light">Rekomendasi untuk {{ word|capitalize }}</h1>
+        <h1 style="margin-left: 45%; margin-top: 5px; margin-bottom: 4px;" class="text-light">Rekomendasi untuk {{ word|capitalize }}</h1>
     {% endif %}
     <div style="background-color: white; width: 30%; margin-left: 35%;">
 
@@ -161,12 +161,15 @@
                         <td><a style="text-align: center; margin-left: 5%; margin-top: 5%; color: black; text-decoration: none;" href="{{ url_for('acehnese_dictionary_blueprint.get_indonesia_detail_indonesia_aceh', kata=kata)}}">pilih</a></td>
                     </tr>
                 {% endfor %}
+                <!-- {% if semua_kosakata|length > 0 %}
+                  <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/detailia">Detail Perhitungan Levenshtein Distance</a></p>
+                {% endif %} -->
             </tbody>
           </table>
     </div>
-    <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/aceh-indonesia/">Aceh Indonesia</a></p>
+    <p style="margin-left: 46%; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/aceh-indonesia/">Aceh Indonesia</a></p>
     <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white" style="margin-top: 310px;">
+    <div class="copyright py-4 text-center text-white" style="margin-top: 340px;">
         <div class="container"><small>Copyright &copy; Kamus Bahasa Aceh 2022</small></div>
     </div>
     <!-- jQuery -->

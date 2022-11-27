@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Detail Persentasi hasil perhitungan Distance Levenshtein | Indonesia - Aceh</h2>
+
+<table>
+  <tr>
+    <th>Keyword</th>
+    <th>Rekomendasi</th>
+    <th>Panjang</th>
+    <th>Persen Jarak</th>
+    <th>Jumlah perbedaan</th>
+  </tr>
+  {% for data in alldata %}
+    <tr>
+      {% for d in data %}  
+        <td><b>{{ d }}</b></td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+

@@ -1,5 +1,20 @@
 # from app import db
 # from app.models import Vocabularies, Examples
+import os
+import csv
+from pandas import read_csv  
+
+def calculate_percentage_accuracy(distance_character, total_character):
+    return abs((distance_character - total_character) / total_character) * 100
+
+def insert_distance_percentage(alldata, csv_filename):
+    # df = read_csv(csv_filename)
+    # df.columns = ['Keyword', 'Recomendation', 'Length' ,'Percentage', 'Distance']
+    # df.to_csv(csv_filename)
+    with open(f'{os.getcwd()}/{csv_filename}', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        for data in alldata:
+            writer.writerow(data)
 
 
 # def new_vocabulary(payload):

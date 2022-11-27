@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+# from flask_mysqldb import MySQL
 
 from app.admin.views import admin
 # from app.views import acehnese_dictionary_blueprint
