@@ -16,6 +16,9 @@ def insert_distance_percentage(alldata, csv_filename):
         for data in alldata:
             writer.writerow(data)
 
+def hitung_akurasi_levenshtein_distance(akurasi, numWords):
+    return (akurasi/numWords) * 100
+
 
 # def new_vocabulary(payload):
 #     index = len(Vocabularies.query.all()) + 1
