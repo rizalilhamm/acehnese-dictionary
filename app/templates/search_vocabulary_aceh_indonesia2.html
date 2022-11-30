@@ -123,13 +123,15 @@
                         style="cursor: pointer">Kamus</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/home/translate"
                         style="cursor: pointer">Sarankan / Request</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login"
+                        style="cursor: pointer">Login Admin</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div>
         <form action="" style="margin-top: 12%;" method="post">
-            <h4 class="text-light" style="margin-left: 45%; margin-bottom: 2px;">Kamus Aceh Indonesia</h4>
+            <h4 class="text-light" style="margin-left: 45%; margin-bottom: 2px;">Kamus Aceh Indonesia</a><a href="http://127.0.0.1:5000/search/indonesia-aceh/" style="color: grey;"> <i>Switch</i></a></h4>
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label"></label>
                 <input class="form-control mb-2" style="width: 30%; margin-left:35%;" name="word" placeholder="Search in Indonesia">
@@ -139,7 +141,7 @@
         </form>
     </div>
     {% if semua_kosakata|length > 0 %}
-        <h1 style="margin-left: 750px; margin-top: 5px; margin-bottom: 4px;" class="text-light">Rekomendasi untuk {{ word|capitalize }}</h1>
+        <h1 style="margin-left: 750px; margin-top: 5px; margin-bottom: 4px;" class="text-light">Rekomendasi untuk {{ word|capitalize }} {% if semua_kosakata|length > 0 %}<a href="http://127.0.0.1:5000/detailai" style="color: grey;"><i>Detail</i>{% endif %} </a></h1>
     {% endif %}
     <div style="background-color: white; width: 30%; margin-left: 35%;">
 
@@ -164,7 +166,7 @@
             </tbody>
           </table>
         </div>
-        <p style="margin-left: 790px; color:rgb(245, 248, 250)"><a href="http://127.0.0.1:5000/search/indonesia-aceh/">Indonesia Aceh</a></p>
+        <p style="color: #1abc9c ;">sdfasdf</p>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white" style="margin-top: 340px;">
         <div class="container"><small>Copyright &copy; Kamus Bahasa Aceh 2022</small></div>
