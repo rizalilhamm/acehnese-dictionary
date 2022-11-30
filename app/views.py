@@ -21,7 +21,7 @@ def search_data_aceh_indonesia():
 
         if len(word.replace(" ", "")) == 0:
             return render_template("search_vocabulary_aceh_indonesia2.html")
-        response = calcDictDistance(word=word, numWords=100, search_type='aceh_indonesia', csv_filename='distance_percentage_aceh_indonesia.csv')
+        response = calcDictDistance(word=word, numWords=10, search_type='aceh_indonesia', csv_filename='distance_percentage_aceh_indonesia.csv')
         semua_kosakata = response[0]
 
         words = {}
