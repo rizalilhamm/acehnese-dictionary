@@ -1,4 +1,3 @@
-from turtle import distance
 import numpy
 
 def levenshteinDistanceMatrix(token1, token2):
@@ -10,7 +9,6 @@ def levenshteinDistanceMatrix(token1, token2):
         distances[0][t2] = t2
 
     a, b, c = 0, 0, 0
-
     for t1 in range(1, len(token1) + 1):
         for t2 in range(1, len(token2) + 1):
             if (token1[t1-1] == token2[t2-1]):
@@ -29,7 +27,6 @@ def levenshteinDistanceMatrix(token1, token2):
                     distances[t1][t2] = c + 1
 
         
-    # printDistances(distances, len(token1), len(token2))
     return int(distances[len(token1)][len(token2)])
 
 def printDistances(distances, token1Length, token2Length):

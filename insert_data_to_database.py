@@ -6,13 +6,15 @@ Requirements:
 4. jika kata dalam list lebih 
 """
 
+# Method to insert to database
 from app.controller.kosakata import buat_kosakata_baru
 
 file = open('kosa_kata.txt','r')
-
+# Read data from file line by line
 data = file.readlines()
 
 for d in data:
+    # Split data Aceh - Indonesia - English
     kata = d.split(' - ')
     if len(kata) < 2:
         continue
