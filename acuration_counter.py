@@ -1,10 +1,11 @@
 from levenshtein import levenshteinDistanceMatrix
 from app.utilities import calculate_percentage_accuracy, insert_distance_percentage
 from calculate_distance import calcDictDistance
+import os
 
 file = open('expected_data_test.txt', 'r')
 
-jumlah_list = int(input('Masukkan jumlah list data: '))
+jumlah_list = 10
 def hitung():
     data = file.readlines()
     jumlah = 0

@@ -1,5 +1,6 @@
 from levenshtein import levenshteinDistanceMatrix
-from app.utilities import calculate_percentage_accuracy, insert_distance_percentage
+from app.utilities import *
+# import is
 
 def calcDictDistance(word, numWords, search_type, csv_filename=None):
     file = open('kosa_kata.txt', 'r')
