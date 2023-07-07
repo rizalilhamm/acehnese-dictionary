@@ -9,7 +9,7 @@ importlib-resources==5.4.0
 itsdangerous==2.0.1
 jieba==0.42.1
 Jinja2==3.0.3
-joblib==1.1.0
+joblib==1.2.0
 Mako==1.1.6
 MarkupSafe==2.0.1
 pylev==1.4.0
